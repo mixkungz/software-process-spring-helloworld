@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "99b591be-5cbd-4a33-aadf-2eb2ccb1a4e4",
+		"name": "Software process helloworld",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get alll greeting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e2360b3-63bd-4410-9edf-cde3e95543b1",
+						"exec": [
+							"pm.test('greeting must have 5 greeting', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var data_length = jsonData.length",
+							"    //Assert",
+							"    pm.expect(data_length).to.eql(5)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/greetings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"greetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get greeting by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87bdc16f-8374-4dca-9f69-e047ea734a31",
+						"exec": [
+							"pm.test('greeting id 1 must id 1', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var id = jsonData.id",
+							"    //Assert",
+							"    pm.expect(id).to.eql(1)",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/greetings/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"greetings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new greeting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49c95f09-4361-42d6-8a0c-27de65a84e64",
+						"exec": [
+							"pm.test('return text must be sit kmutt', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var text = jsonData.text",
+							"    //Assert",
+							"    pm.expect(text).to.eql(\"sit kmutt\")",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\":\"sit kmutt\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/greetings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"greetings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
